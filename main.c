@@ -1,20 +1,25 @@
 #include <stdio.h>
 #include <string.h>
-void main(void) {
+#include<stdlib.h>
+int main(int argc,char *argv()) {
 	FILE* fp;
-	fp=fopen("sample.txt","w");
-	char str[100];
-	int i;
-	for(i=0;i<3;i++)
-	{
-	printf("input a word");
-	scanf("%s",str); //포인터라서 &가 필요없음 
-	fprintf(fp,"%s\n",str);
-
-}
+	char c;
 	
+	fp=fopen("sample.txt","r");
+	if(fp==NULL)
+	{
+		printf("failed to open\n");
+		return 0;
+	}
+	
+	while((c=fgetc(fp))!=EOF)//한글자 읽은게 마지막이 아니면 
+	{
+		//한글자 출력
+		putchar(c);//한글자 출력 
+		
+	}
 	fclose(fp);
-
+	system("PAUSE"); 
 	return 0;
 }
 
